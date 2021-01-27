@@ -2,7 +2,7 @@ function Bank() {
   this.accounts = {};
   this.id = 0;
 }
-
+//test
 function Account(name, initialDeposit) {
   this.name = name;
   this.amount = initialDeposit;
