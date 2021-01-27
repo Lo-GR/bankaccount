@@ -24,20 +24,28 @@ Account.prototype.deposit = function(money) {
 }
 
 Account.prototype.withdraw = function(money) {
-  if(this.amount - money < 0) {
+  if (this.amount - money < 0) {
     alert("Insufficient amount");
-  }
-  else {
+  } else {
     this.amount -= money;
   }
 }
 
-
-
-
-
-
-
+let bank = new Bank();
 $(document).ready(function() {
-
+  $("#new-account").submit(function(event) {
+    event.preventDefault();
+    const name = $("#newName").val();
+    const initialDeposit = $("#initialDeposit").val();
+    let newAccount = new Account(name, initialDeposit);
+    bank.addAccount(newAccount);
+  });
+  $("#move-money").submit(function(event) {
+    event.preventDefault();
+    const id = $("id").val();
+    const deposit = $("#deposit").val();
+    const withdraw = $("#withdraw").val();
+    bank[id].deposit(deposit);
+    bank[id].withdraw(withdraw);
+  });
 });
