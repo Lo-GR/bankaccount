@@ -18,6 +18,12 @@ Bank.prototype.addAccount = function(account) {
   this.accounts[account.id] = account;
 }
 
+Bank.prototype.findAccount = function(id) {
+  if (this.accounts[id] != undefined) {
+    return this.accounts[id];
+  }
+  return false;
+}
 
 Account.prototype.deposit = function(money) {
   this.amount += money;
@@ -43,11 +49,11 @@ $(document).ready(function() {
   });
   $("#move-money").submit(function(event) {
     event.preventDefault();
-    const id = parseInt($("id").val());
+    const index = $("#id").val();
     const deposit = parseInt($("#deposit").val());
     const withdraw = parseInt($("#withdraw").val());
-    bank.accounts[id].deposit(deposit);
-    bank.accounts[id].withdraw(withdraw);
-    $("#output").text("$" + bank.accounts[id].amount);
+    bank.accounts[index].deposit(deposit);
+    bank.accounts[index].withdraw(withdraw);
+    $("#output").text("$" + bank.accounts[index].amount);
   });
 });
