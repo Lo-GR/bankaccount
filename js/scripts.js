@@ -8,11 +8,6 @@ function Account(name, initialDeposit) {
   this.amount = initialDeposit;
 }
 
-Bank.prototype.assignId = function() {
-  this.id += 1;
-  return this.id;
-}
-
 Bank.prototype.addAccount = function(account) {
   account.id = this.assignId();
   this.accounts[account.id] = account;
