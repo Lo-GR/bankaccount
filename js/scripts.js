@@ -47,5 +47,6 @@ $(document).ready(function() {
     const withdraw = $("#withdraw").val();
     bank[id].deposit(deposit);
     bank[id].withdraw(withdraw);
+    $("#output").text("$" + bank[id].amount);
   });
 });
