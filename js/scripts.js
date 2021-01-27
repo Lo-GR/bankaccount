@@ -39,14 +39,15 @@ $(document).ready(function() {
     const initialDeposit = $("#initialDeposit").val();
     let newAccount = new Account(name, initialDeposit);
     bank.addAccount(newAccount);
+    // alert(bank[1]);
   });
   $("#move-money").submit(function(event) {
     event.preventDefault();
-    const id = $("id").val();
-    const deposit = $("#deposit").val();
-    const withdraw = $("#withdraw").val();
-    bank[id].deposit(deposit);
-    bank[id].withdraw(withdraw);
-    $("#output").text("$" + bank[id].amount);
+    const id = parseInt($("id").val());
+    const deposit = parseInt($("#deposit").val());
+    const withdraw = parseInt($("#withdraw").val());
+    bank.accounts[id].deposit(deposit);
+    bank.accounts[id].withdraw(withdraw);
+    $("#output").text("$" + bank.accounts[id].amount);
   });
 });
